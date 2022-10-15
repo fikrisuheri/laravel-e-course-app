@@ -4,7 +4,7 @@
     <div class="card-header d-flex justify-content-between">
         <h4 class="card-title">Master Category</h4>
         <div class="card-header-action">
-            <a href="" class="btn btn-primary">Tambah</a>
+            <a href="{{ route('backend.master.category.create') }}" class="btn btn-primary">Tambah</a>
         </div>
     </div>
     <div class="card-body">

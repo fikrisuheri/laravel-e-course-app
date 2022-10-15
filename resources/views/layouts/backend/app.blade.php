@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('mazer') }}/assets/css/pages/fontawesome.css">
     <link rel="stylesheet" href="{{ asset('mazer') }}/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="{{ asset('mazer') }}/assets/css/pages/datatables.css">
+    <link rel="stylesheet" href="{{ asset('mazer') }}/assets/extensions/toastify-js/src/toastify.css"/>
     @stack('css')
 </head>
 
@@ -38,6 +39,20 @@
     <script src="{{ asset('mazer') }}/assets/extensions/jquery/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
     <script src="{{ asset('mazer') }}/assets/js/pages/datatables.js"></script>
+    <script src="{{ asset('mazer') }}/assets/extensions/toastify-js/src/toastify.js"></script>
+    <script src="{{ asset('mazer') }}/assets/js/pages/toastify.js"></script>
+    @if (session()->has('success'))
+    <script>
+            Toastify({
+                text: "Sukses",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "#4fbe87",
+            }).showToast()
+    </script>
+    @endif
 @stack('js')
 </body>
 

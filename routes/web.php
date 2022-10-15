@@ -30,6 +30,7 @@ Route::prefix('backend')->name('backend.')->group(function(){
 
             Route::get('/',[CategoryController::class,'index'])->name('index');
             Route::get('/create',[CategoryController::class,'create'])->name('create');
+            Route::post('/store',[CategoryController::class,'store'])->name('store');
 
         });
 
