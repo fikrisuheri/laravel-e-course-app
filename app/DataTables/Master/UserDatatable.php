@@ -2,7 +2,7 @@
 
 namespace App\DataTables\Master;
 
-use App\Models\Master\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CategoryDatatable extends DataTable
+class UserDatatable extends DataTable
 {
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
@@ -43,7 +43,7 @@ class CategoryDatatable extends DataTable
         ];
     }
 
-    public function query(Category $model): QueryBuilder
+    public function query(User $model): QueryBuilder
     {
         return $model->newQuery()->OrderBy('id','desc');
     }
@@ -51,7 +51,7 @@ class CategoryDatatable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('category-table')
+            ->setTableId('user-table')
             ->columns($this->getColumns())
             ->minifiedAjax();
     }
@@ -60,8 +60,9 @@ class CategoryDatatable extends DataTable
     protected function getColumns(): array
     {
         return [
-            Column::make('name')->title(__('field.category_name'))->orderable(false),
-            Column::make('action')->title(__('field.action'))->orderable(false),
+            Column::make('name')->title(__('field.user_name'))->orderable(false),
+            Column::make('email')->title(__('field.email'))->orderable(false),
+            Column::make('action')->title('Aksi')->orderable(false),
         ];
     }
 

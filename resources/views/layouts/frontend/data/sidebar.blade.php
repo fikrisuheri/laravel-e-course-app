@@ -24,14 +24,39 @@
     
     <li
         class="sidebar-item  ">
-        <a href="index.html" class='sidebar-link'>
+        <a href="{{ route('frontend.user.dashboard') }}" class='sidebar-link'>
             <i class="bi bi-grid-fill"></i>
             <span>Dashboard</span>
         </a>
     </li>
+
+    <li
+    class="sidebar-item  ">
+    <a href="{{ route('frontend.user.dashboard') }}" class='sidebar-link'>
+        <i class="bi bi-collection"></i>
+        <span>Kursus Saya</span>
+    </a>
+</li>
+
+<li
+class="sidebar-item  has-sub">
+<a href="#" class='sidebar-link'>
+    <i class="bi bi-menu-down"></i>
+    <span>Menu {{ __('sidebar.mitra') }}</span>
+</a>
+<ul class="submenu ">
+    <li class="submenu-item ">
+        <a href="{{ route('backend.feature.mitra.index') }}">{{ __('sidebar.mitra') }}</a>
+    </li>
+    <li class="submenu-item ">
+        <a href="{{ route('backend.feature.course.index') }}">{{ __('sidebar.course') }}</a>
+    </li>
+    <li class="submenu-item ">
+        <a href="{{ route('backend.master.user.index') }}">{{ __('sidebar.transaction') }}</a>
+    </li>
+</ul>
+</li>
     
-  @include('layouts.backend.data.master-sidebar')
-  @include('layouts.backend.data.feature-sidebar')
     
 </ul>
 </div>

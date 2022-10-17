@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Backend\Feature\CourseController;
+use App\Http\Controllers\Backend\Feature\MitraController;
 use App\Http\Controllers\Backend\Master\CategoryController;
+use App\Http\Controllers\Backend\Master\PenggunaController;
+use App\Http\Controllers\Frontend\DashboardController as FrontendDashboardController;
+use App\Http\Controllers\Frontend\Mitra\RegistermitraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +27,7 @@ Route::get('/backend/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('backend')->name('backend.')->group(function(){
+Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->group(function(){
 
     Route::prefix('master')->name('master.')->group(function(){
 
@@ -31,8 +36,54 @@ Route::prefix('backend')->name('backend.')->group(function(){
             Route::get('/',[CategoryController::class,'index'])->name('index');
             Route::get('/create',[CategoryController::class,'create'])->name('create');
             Route::post('/store',[CategoryController::class,'store'])->name('store');
+            Route::get('/edit/{id}',[CategoryController::class,'edit'])->name('edit');
+            Route::post('/update/{id}',[CategoryController::class,'update'])->name('update');
+            Route::get('/delete/{id}',[CategoryController::class,'delete'])->name('delete');
 
         });
+
+        Route::prefix('user')->name('user.')->group(function(){
+
+            Route::get('/',[PenggunaController::class,'index'])->name('index');
+            Route::get('/create',[PenggunaController::class,'create'])->name('create');
+            Route::post('/store',[PenggunaController::class,'store'])->name('store');
+            Route::get('/edit/{id}',[PenggunaController::class,'edit'])->name('edit');
+            Route::post('/update/{id}',[PenggunaController::class,'update'])->name('update');
+            Route::get('/delete/{id}',[PenggunaController::class,'delete'])->name('delete');
+
+        });
+
+    });
+
+    Route::prefix('feature')->name('feature.')->group(function(){
+        
+        Route::prefix('mitra')->name('mitra.')->group(function(){
+
+            Route::get('/',[MitraController::class,'index'])->name('index');
+
+        });
+
+        Route::prefix('course')->name('course.')->group(function(){
+
+            Route::get('/',[CourseController::class,'index'])->name('index');
+
+        });
+
+    });
+
+});
+
+Route::name('frontend.')->middleware(['auth','role:user'])->group(function(){
+
+    Route::prefix('user')->name('user.')->group(function(){
+
+        Route::get('/dashboard',[FrontendDashboardController::class,'index'])->name('dashboard');
+
+    });
+
+    Route::prefix('mitra')->name('mitra.')->group(function(){
+
+        Route::get('/register',[RegistermitraController::class,'register'])->name('register');
 
     });
 
