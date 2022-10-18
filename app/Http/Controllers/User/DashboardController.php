@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         try {
-            return view('frontend.dashboard.index');
+            return view('user.dashboard.index');
         } catch (\Throwable $th) {
             //throw $th;
         }

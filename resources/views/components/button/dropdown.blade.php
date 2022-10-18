@@ -1,5 +1,5 @@
-<div class="btn-group mb-1">
-  <div class="dropdown">
+<div class="btn-group mb-1 dropup ">
+  <div class="dropdown dropup">
     <button
       class="btn btn-primary dropdown-toggle me-1"
       type="button"

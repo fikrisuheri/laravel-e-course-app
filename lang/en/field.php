@@ -7,7 +7,7 @@ return [
     'slug' => 'Slug',
     'email' => 'Email',
     'join_at' => 'Join At',
-
+    'logo' => 'Logo',
     // Category
     'category_name' => 'Category Name',
 

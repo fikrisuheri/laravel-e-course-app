@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('course_details', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('course_id')->constrained()->onDelete('cascade');
-            $table->integer('number');
-            $table->text('link');
-            $table->string('duration');
-            $table->timestamps();
+        Schema::table('mitras', function (Blueprint $table) {
+            $table->string('slug');
+            $table->string('description');
+            $table->integer('is_approved')->default(0)->comment('0 = Pending,1 = Disetujui');
         });
     }
 
@@ -30,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_details');
+        Schema::table('mitras', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -7,6 +7,7 @@ return [
     'slug' => 'Slug',
     'email' => 'Email',
     'join_at' => 'Bergabung Pada',
+    'logo' => 'Logo',
 
     // Category
     'category_name' => 'Nama Kategori',

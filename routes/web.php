@@ -4,8 +4,8 @@ use App\Http\Controllers\Backend\Feature\CourseController;
 use App\Http\Controllers\Backend\Feature\MitraController;
 use App\Http\Controllers\Backend\Master\CategoryController;
 use App\Http\Controllers\Backend\Master\PenggunaController;
-use App\Http\Controllers\Frontend\DashboardController as FrontendDashboardController;
-use App\Http\Controllers\Frontend\Mitra\RegistermitraController;
+use App\Http\Controllers\Mitra\RegistermitraController;
+use App\Http\Controllers\User\DashboardController as UserDashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,7 +60,7 @@ Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->g
         Route::prefix('mitra')->name('mitra.')->group(function(){
 
             Route::get('/',[MitraController::class,'index'])->name('index');
-
+            Route::post('/accept',[MitraController::class,'accept'])->name('accept');
         });
 
         Route::prefix('course')->name('course.')->group(function(){
@@ -77,13 +77,18 @@ Route::name('frontend.')->middleware(['auth','role:user'])->group(function(){
 
     Route::prefix('user')->name('user.')->group(function(){
 
-        Route::get('/dashboard',[FrontendDashboardController::class,'index'])->name('dashboard');
+        Route::get('/dashboard',[UserDashboard::class,'index'])->name('dashboard');
 
     });
 
     Route::prefix('mitra')->name('mitra.')->group(function(){
 
-        Route::get('/register',[RegistermitraController::class,'register'])->name('register');
+        Route::prefix('register')->name('register.')->group(function(){
+
+            Route::get('/',[RegistermitraController::class,'register'])->name('index');
+            Route::post('/store',[RegistermitraController::class,'store'])->name('store');
+
+        });
 
     });
 

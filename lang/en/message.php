@@ -9,4 +9,7 @@ return [
     'dialog_delete'     => 'Delete This Data ?',
     'dialog_yes'        => 'Yes, Delete!',
     'dialog_no'         => 'Cancel',
+
+    'mitra_register_success' => 'Partner registration form successfully sent',
+    'mitra_register_accept' => 'Partner registration has been accepted',
 ];

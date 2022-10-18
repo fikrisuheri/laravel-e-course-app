@@ -9,4 +9,7 @@ return [
     'dialog_delete'     => 'Data Berikut akan dihapus ?',
     'dialog_yes'        => 'Ya, Hapus',
     'dialog_no'         => 'Batalkan',
+
+    'mitra_register_success' => 'Formulir Pendaftaran Mitra Berhasil Dikirim!',
+    'mitra_register_accept' => 'Pendaftaran mitra berhasil disetujui!',
 ];

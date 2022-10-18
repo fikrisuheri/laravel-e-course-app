@@ -21,26 +21,45 @@ class MitraDatatable extends DataTable
                 $data['action'] = $this->actions($query);
                 return view('datatable.actions', compact('data','query'))->render();
             })
-            ->rawColumns(['action'])
+            ->addColumn('image', function ($query) {
+                return '<img src="' . $query->logo_path . '" width="100">';
+            })
+            ->rawColumns(['action','html_status','image'])
             ->setRowId('id');
     }
 
     public function actions($id)
     {
-        return  [
-            [
-                'title' => 'Hapus',
-                'icon' => 'bi bi-trash',
-                'route' => route('backend.master.category.delete',$id),
-                'type' => 'delete',
-            ],
-            [
-                'title' => 'Edit',
-                'icon' => 'bi bi-pen',
-                'route' => route('backend.master.category.edit',$id),
-                'type' => '',
-            ],
-        ];
+            if($id->is_approved == 0){
+                $button[] = [
+                    'title' => __('button.review'),
+                    'icon' => 'bi bi-eye',
+                    'route' => 'javascript:;',
+                    'type' => '',
+                    'modal' => 'modalReview',
+                    'dataModal' => [
+                       [
+                        'name' => 'description',
+                        'value' => $id->description,
+                       ],
+                       [
+                        'name' => 'name',
+                        'value' => $id->name,
+                       ],
+                       [
+                        'name' => 'id',
+                        'value' => $id->id,
+                       ],
+                    ]
+                    ];
+            }
+            $button[] = [
+                'title' => __('button.detail'),
+                'icon' => 'bi bi-eye',
+                'route' => 'javascript:;',
+                'type' => ''
+            ];
+        return $button;
     }
 
     public function query(Mitra $model): QueryBuilder
@@ -61,6 +80,8 @@ class MitraDatatable extends DataTable
     {
         return [
             Column::make('name')->title(__('field.mitra_name'))->orderable(false),
+            Column::make('image')->title('Logo')->orderable(false),
+            Column::make('html_status')->title('Status')->orderable(false),
             Column::make('action')->title(__('field.action'))->orderable(false),
         ];
     }
