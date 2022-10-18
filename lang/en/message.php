@@ -12,4 +12,6 @@ return [
 
     'mitra_register_success' => 'Partner registration form successfully sent',
     'mitra_register_accept' => 'Partner registration has been accepted',
+
+    'mitra_course_store' => 'Form create course successfully sent',
 ];

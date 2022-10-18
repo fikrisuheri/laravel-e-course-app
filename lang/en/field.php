@@ -8,6 +8,9 @@ return [
     'email' => 'Email',
     'join_at' => 'Join At',
     'logo' => 'Logo',
+    'description' => 'Description',
+    'image' => 'Image',
+
     // Category
     'category_name' => 'Category Name',
 
@@ -20,5 +23,9 @@ return [
 
     // Course
     'course_name' => 'Course',
-
+    'course_type' => 'Course Type',
+    'course_category' => 'Course Category',
+    'course_price' => 'Course Price',
+    'course_duration' => 'Duration Total',
+    'course_total' => 'Total Video',
 ];

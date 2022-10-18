@@ -8,6 +8,8 @@ return [
     'email' => 'Email',
     'join_at' => 'Bergabung Pada',
     'logo' => 'Logo',
+    'description' => 'Deskripsi',
+    'image' => 'Gambar',
 
     // Category
     'category_name' => 'Nama Kategori',
@@ -20,6 +22,11 @@ return [
     'mitra_name' => 'Nama Mitra',
 
     // Course
-    'course_name' => 'Kursus',
+    'course_name' => 'Judul Kursus',
+    'course_type' => 'Tipe Kursus',
+    'course_category' => 'Kategori Kursus',
+    'course_price' => 'Harga Kursus',
+    'course_duration' => 'Total Durasi',
+    'course_total' => 'Total Video',
 
 ];

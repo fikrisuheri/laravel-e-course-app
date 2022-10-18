@@ -22,7 +22,8 @@ class CourseDatatable extends DataTable
                 $data['action'] = $this->actions($query);
                 return view('datatable.actions', compact('data','query'))->render();
             })
-            ->rawColumns(['action'])
+            ->addIndexColumn()            
+            ->rawColumns(['action','type_name'])
             ->setRowId('id');
     }
 
@@ -46,7 +47,7 @@ class CourseDatatable extends DataTable
 
     public function query(Course $model): QueryBuilder
     {
-        return $model->newQuery()->OrderBy('id','desc');
+        return $model->newQuery()->with(['Mitra'])->OrderBy('id','desc');
     }
 
     public function html()
@@ -61,8 +62,14 @@ class CourseDatatable extends DataTable
     protected function getColumns(): array
     {
         return [
+            Column::make('DT_RowIndex')->title('#')->orderable(false)->searchable(false),
             Column::make('name')->title(__('field.course_name'))->orderable(false),
-            Column::make('action')->title(__('field.action'))->orderable(false),
+            Column::make('mitra_name')->title(__('sidebar.mitra'))->orderable(false)->searchable(false),
+            Column::make('type_name')->title(__('field.course_type'))->orderable(false)->searchable(false),
+            Column::make('price')->title(__('field.course_price')),
+            Column::make('total_duration')->title(__('field.course_duration'))->orderable(false)->searchable(false),
+            Column::make('total_video')->title(__('field.course_total'))->orderable(false)->searchable(false),
+            Column::make('action')->title(__('field.action'))->orderable(false)->searchable(false),
         ];
     }
 

@@ -7,7 +7,10 @@ return [
     'delete'     => 'Hapus',
     'detail'     => 'Detail',
     'close'      => 'Tutup',
+    'process'      => 'Proses',
 
     'review'     => 'Tinjau',
     'accept'     => 'Setujui',
+
+    'back'       => 'Kembali',
 ];

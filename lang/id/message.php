@@ -12,4 +12,6 @@ return [
 
     'mitra_register_success' => 'Formulir Pendaftaran Mitra Berhasil Dikirim!',
     'mitra_register_accept' => 'Pendaftaran mitra berhasil disetujui!',
+
+    'mitra_course_store' => 'Berhasil Mengirim Kursus',
 ];
