@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+@extends('layouts.user.app')
 @section('content')
 <div class="card">
     <div class="card-header d-flex justify-content-between">

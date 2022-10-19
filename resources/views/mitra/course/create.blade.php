@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+@extends('layouts.user.app')
 @section('content')
     <form action="{{ route('frontend.mitra.course.store') }}" method="post" enctype="multipart/form-data">
         <div class="card">

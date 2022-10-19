@@ -9,7 +9,7 @@ class Course extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $appends = ['total_duration','total_video','mitra_name','type_name'];
+    protected $appends = ['total_duration','total_video','mitra_name','type_name','image_path','price_rupiah'];
     
     // Relation
     public function Detail()
@@ -33,7 +33,7 @@ class Course extends Model
     public function getTotalVideoAttribute()
     {
         $total =  $this->Detail()->count();
-        return $total . ' Jam';
+        return $total . ' Video';
     }
 
     public function getMitraNameAttribute()
@@ -41,12 +41,23 @@ class Course extends Model
         return $this->mitra->user->name;
     }
 
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+    }
+
+    public function getPriceRupiahAttribute()
+    {
+        return 'Rp ' . number_format($this->price,0,'.');
+    }
+
+
     public function getTypeNameAttribute()
     {
         if($this->type == 0){
-            return '<span class="badge bg-success">Gratis</span>';
+            return '<span class="badge bg-light-success">Gratis</span>';
         }else{
-            return '<span class="badge bg-primary">Berbayar</span>';
+            return '<span class="badge bg-light-primary">Berbayar</span>';
         }
     }
 }

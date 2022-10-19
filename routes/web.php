@@ -4,6 +4,8 @@ use App\Http\Controllers\Backend\Feature\CourseController;
 use App\Http\Controllers\Backend\Feature\MitraController;
 use App\Http\Controllers\Backend\Master\CategoryController;
 use App\Http\Controllers\Backend\Master\PenggunaController;
+use App\Http\Controllers\Frontend\KursusController;
+use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Mitra\CoursemitraController;
 use App\Http\Controllers\Mitra\RegistermitraController;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
@@ -20,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/backend/dashboard', function () {
     return view('dashboard');
@@ -74,29 +74,41 @@ Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->g
 
 });
 
-Route::name('frontend.')->middleware(['auth','role:user'])->group(function(){
+Route::name('frontend.')->group(function(){
 
-    Route::prefix('user')->name('user.')->group(function(){
+    Route::get('/',[WelcomeController::class,'index'])->name('index');
 
-        Route::get('/dashboard',[UserDashboard::class,'index'])->name('dashboard');
+    Route::prefix('course')->name('course.')->group(function(){
+
+        Route::get('/{mitraSlug}/{courseSlug}',[KursusController::class,'show'])->name('show');
 
     });
 
-    Route::prefix('mitra')->name('mitra.')->group(function(){
+    Route::middleware(['auth','role:user'])->group(function(){
 
-        Route::prefix('register')->name('register.')->group(function(){
+        Route::prefix('user')->name('user.')->group(function(){
 
-            Route::get('/',[RegistermitraController::class,'register'])->name('index');
-            Route::post('/store',[RegistermitraController::class,'store'])->name('store');
-
+            Route::get('/dashboard',[UserDashboard::class,'index'])->name('dashboard');
+    
         });
-
-        Route::prefix('course')->name('course.')->group(function(){
-
-            Route::get('/',[CoursemitraController::class,'index'])->name('index');
-            Route::get('/create',[CoursemitraController::class,'create'])->name('create');
-            Route::post('/store',[CoursemitraController::class,'store'])->name('store');
-
+    
+        Route::prefix('mitra')->name('mitra.')->group(function(){
+    
+            Route::prefix('register')->name('register.')->group(function(){
+    
+                Route::get('/',[RegistermitraController::class,'register'])->name('index');
+                Route::post('/store',[RegistermitraController::class,'store'])->name('store');
+    
+            });
+    
+            Route::prefix('course')->name('course.')->group(function(){
+    
+                Route::get('/',[CoursemitraController::class,'index'])->name('index');
+                Route::get('/create',[CoursemitraController::class,'create'])->name('create');
+                Route::post('/store',[CoursemitraController::class,'store'])->name('store');
+    
+            });
+    
         });
 
     });
