@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('total_pay');
             $table->string('snap_token')->nullable();
             $table->integer('status')->default(0);
-            $table->string('pay_at');
+            $table->string('pay_at')->nullable();
             $table->timestamps();
         });
     }

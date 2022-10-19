@@ -21,17 +21,17 @@
 
 <body>
     <div id="app">
-        @include('layouts.frontend.data.sidebar')
+        @include('layouts.user.data.sidebar')
         <div id="main" class='layout-navbar'>
-            @include('layouts.frontend.data.navbar')
+            @include('layouts.user.data.navbar')
             <div id="main-content">
                 <div class="page-heading">
-                    @include('layouts.frontend.data.breadcrumbs')
+                    @include('layouts.user.data.breadcrumbs')
                     <section class="section">
                         @yield('content')
                     </section>
                 </div>
-                @include('layouts.frontend.data.footer')
+                @include('layouts.user.data.footer')
             </div>
         </div>
     </div>

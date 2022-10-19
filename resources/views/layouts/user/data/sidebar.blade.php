@@ -22,22 +22,29 @@
 <ul class="menu">
     <li class="sidebar-title">Menu</li>
     
-    <li
-        class="sidebar-item  ">
+    <li class="sidebar-item  ">
         <a href="{{ route('frontend.user.dashboard') }}" class='sidebar-link'>
             <i class="bi bi-grid-fill"></i>
             <span>Dashboard</span>
         </a>
     </li>
 
-    <li
-    class="sidebar-item  ">
+    <li class="sidebar-item">
     <a href="{{ route('frontend.user.dashboard') }}" class='sidebar-link'>
         <i class="bi bi-collection"></i>
         <span>Kursus Saya</span>
     </a>
 </li>
 
+<li class="sidebar-item">
+    <a href="{{ route('frontend.user.transaction.index') }}" class='sidebar-link'>
+        <i class="bi bi-currency-dollar"></i>
+        <span>Riwayat Transaksi</span>
+    </a>
+</li>
+
+
+@if (auth()->user()->role_name == 'mitra')
 <li
 class="sidebar-item  has-sub">
 <a href="#" class='sidebar-link'>
@@ -53,6 +60,7 @@ class="sidebar-item  has-sub">
     </li>
 </ul>
 </li>
+@endif
     
     
 </ul>

@@ -12,7 +12,7 @@ class="sidebar-item  has-sub">
         <a href="{{ route('backend.feature.course.index') }}">{{ __('sidebar.course') }}</a>
     </li>
     <li class="submenu-item ">
-        <a href="{{ route('backend.master.user.index') }}">{{ __('sidebar.transaction') }}</a>
+        <a href="{{ route('backend.feature.transaction.index') }}">{{ __('sidebar.transaction') }}</a>
     </li>
 </ul>
 </li>

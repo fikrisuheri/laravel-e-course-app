@@ -31,6 +31,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'role_name',
+    ];
+
     // Relation
 
     public function Mitra()
@@ -46,5 +50,10 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function getRoleNameAttribute()
+    {
+        return $this->roles->pluck('name')[0];
     }
 }

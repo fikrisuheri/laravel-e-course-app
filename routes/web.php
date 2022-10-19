@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\Feature\CourseController;
 use App\Http\Controllers\Backend\Feature\MitraController;
+use App\Http\Controllers\Backend\Feature\TransactionController as FeatureTransactionController;
 use App\Http\Controllers\Backend\Master\CategoryController;
 use App\Http\Controllers\Backend\Master\PenggunaController;
 use App\Http\Controllers\Frontend\KursusController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Mitra\CoursemitraController;
 use App\Http\Controllers\Mitra\RegistermitraController;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
+use App\Http\Controllers\User\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +72,12 @@ Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->g
 
         });
 
+        Route::prefix('transaction')->name('transaction.')->group(function(){
+
+            Route::get('/',[FeatureTransactionController::class,'index'])->name('index');
+
+        });
+
     });
 
 });
@@ -89,7 +97,12 @@ Route::name('frontend.')->group(function(){
         Route::prefix('user')->name('user.')->group(function(){
 
             Route::get('/dashboard',[UserDashboard::class,'index'])->name('dashboard');
-    
+            
+            Route::prefix('transaction')->name('transaction.')->group(function(){
+                Route::get('/',[TransactionController::class,'index'])->name('index');
+                Route::post('/store',[TransactionController::class,'store'])->name('store');
+            });
+
         });
     
         Route::prefix('mitra')->name('mitra.')->group(function(){

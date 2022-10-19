@@ -10,7 +10,7 @@ return [
     'logo' => 'Logo',
     'description' => 'Deskripsi',
     'image' => 'Gambar',
-
+    
     // Category
     'category_name' => 'Nama Kategori',
 
@@ -28,5 +28,9 @@ return [
     'course_price' => 'Harga Kursus',
     'course_duration' => 'Total Durasi',
     'course_total' => 'Total Video',
+
+    // Transaction
+    'transaction_total_pay' => 'Total Pembayaran',
+    'transaction_status' => 'Status Pembayaran'
 
 ];

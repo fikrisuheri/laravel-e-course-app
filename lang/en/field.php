@@ -28,4 +28,8 @@ return [
     'course_price' => 'Course Price',
     'course_duration' => 'Duration Total',
     'course_total' => 'Total Video',
+
+    // Transaction
+    'transaction_total_pay' => 'Total Pay',
+    'transaction_status' => 'Payment Status'
 ];
