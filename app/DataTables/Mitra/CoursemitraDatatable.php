@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DataTables\Feature;
+namespace App\DataTables\Mitra;
 
-use App\Models\Feature\Transaction;
+use App\Models\Feature\Course;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class TransactionDatatable extends DataTable
+class CoursemitraDatatable extends DataTable
 {
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
@@ -22,7 +22,7 @@ class TransactionDatatable extends DataTable
                 return view('datatable.actions', compact('data','query'))->render();
             })
             ->addIndexColumn()            
-            ->rawColumns(['action','html_status'])
+            ->rawColumns(['action','type_name'])
             ->setRowId('id');
     }
 
@@ -35,18 +35,26 @@ class TransactionDatatable extends DataTable
                 'route' => route('backend.master.category.delete',$id),
                 'type' => 'delete',
             ],
+            [
+                'title' => 'Edit',
+                'icon' => 'bi bi-pen',
+                'route' => route('backend.master.category.edit',$id),
+                'type' => '',
+            ],
         ];
     }
 
-    public function query(Transaction $model): QueryBuilder
+    public function query(Course $model): QueryBuilder
     {
-        return $model->newQuery()->OrderBy('id','desc');
+        return $model->newQuery()->with(['Mitra'])->whereHas('Mitra',function($q){
+            $q->where('user_id',auth()->user()->id);
+        })->OrderBy('id','desc');
     }
 
     public function html()
     {
         return $this->builder()
-            ->setTableId('transaction-table')
+            ->setTableId('course-table')
             ->columns($this->getColumns())
             ->minifiedAjax();
     }
@@ -56,10 +64,12 @@ class TransactionDatatable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false)->searchable(false),
-            Column::make('invoice_number')->title(__('field.transaction_invoice')),
-            Column::make('course_name')->title(__('field.course_name')),
-            Column::make('total_pay')->title(__('field.transaction_total_pay')),
-            Column::make('html_status')->title(__('field.transaction_status')),
+            Column::make('name')->title(__('field.course_name'))->orderable(false),
+            Column::make('type_name')->title(__('field.course_type'))->orderable(false)->searchable(false),
+            Column::make('price')->title(__('field.course_price')),
+            Column::make('total_duration')->title(__('field.course_duration'))->orderable(false)->searchable(false),
+            Column::make('total_video')->title(__('field.course_total'))->orderable(false)->searchable(false),
+            Column::make('total_student')->title(__('field.course_student'))->orderable(false)->searchable(false),
             Column::make('action')->title(__('field.action'))->orderable(false)->searchable(false),
         ];
     }
@@ -68,6 +78,6 @@ class TransactionDatatable extends DataTable
 
     protected function filename(): string
     {
-        return 'Transcatoin_' . date('YmdHis');
+        return 'Order_' . date('YmdHis');
     }
 }

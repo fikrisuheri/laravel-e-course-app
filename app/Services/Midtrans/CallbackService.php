@@ -31,15 +31,15 @@ class CallbackService extends Midtrans
                 }
             }
         } else if ($status == 'settlement') {
-            $transaction->status_order = 1;
+            $transaction->status = 1;
         } else if ($status == 'pending') {
-            $transaction->status_order = 0;
+            $transaction->status = 0;
         } else if ($status == 'deny') {
-            $transaction->status_order = 2;
+            $transaction->status = 2;
         } else if ($status == 'expire') {
-            $transaction->status_order = 3;
+            $transaction->status = 2;
         } else if ($status == 'cancel') {
-            $transaction->status_order = 2;
+            $transaction->status = 2;
         }
 
         // Simpan transaksi

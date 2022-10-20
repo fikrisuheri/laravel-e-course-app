@@ -30,7 +30,7 @@
     </li>
 
     <li class="sidebar-item">
-    <a href="{{ route('frontend.user.dashboard') }}" class='sidebar-link'>
+    <a href="{{ route('frontend.user.course.index') }}" class='sidebar-link'>
         <i class="bi bi-collection"></i>
         <span>Kursus Saya</span>
     </a>
@@ -56,7 +56,7 @@ class="sidebar-item  has-sub">
         <a href="{{ route('frontend.mitra.course.index') }}">{{ __('sidebar.course') }}</a>
     </li>
     <li class="submenu-item ">
-        <a href="{{ route('backend.master.user.index') }}">{{ __('sidebar.transaction') }}</a>
+        <a href="{{ route('frontend.mitra.transaction.index') }}">{{ __('sidebar.transaction') }}</a>
     </li>
 </ul>
 </li>

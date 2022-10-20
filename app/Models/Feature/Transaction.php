@@ -2,6 +2,7 @@
 
 namespace App\Models\Feature;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $appends = ['course_name','html_status'];
+    protected $appends = ['course_name','html_status','buyer_name'];
     // Relation
     public function Course()
     {
@@ -35,5 +36,10 @@ class Transaction extends Model
         }else{
             return '<span class="badge bg-success">'.__('status.transaction_expired').'</span>';
         }
+    }
+
+    public function getBuyerNameAttribute()
+    {
+        return $this->user->name;
     }
 }

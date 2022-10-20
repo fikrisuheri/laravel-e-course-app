@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mitra;
 
+use App\DataTables\Mitra\CoursemitraDatatable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mitra\CourseMitraRequest;
 use App\Models\Feature\Course;
@@ -21,9 +22,13 @@ class CoursemitraController extends Controller
         $this->courseDetail = new BaseRepository($courseDetail);
     }
 
-    public function index()
+    public function index(CoursemitraDatatable $datatable)
     {
-        return view('mitra.course.index');
+        try {
+            return $datatable->render('mitra.course.index');
+        }catch (\Throwable $th) {
+            return view('error.index',['message' => $th->getMessage()]);
+        }
     }
 
     public function create()

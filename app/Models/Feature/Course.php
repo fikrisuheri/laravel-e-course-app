@@ -9,7 +9,7 @@ class Course extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $appends = ['total_duration','total_video','mitra_name','type_name','image_path','price_rupiah'];
+    protected $appends = ['total_duration','total_video','total_item','mitra_name','type_name','image_path','price_rupiah','total_student'];
     
     // Relation
     public function Detail()
@@ -20,6 +20,11 @@ class Course extends Model
     public function Mitra()
     {
         return $this->belongsTo(Mitra::class,'mitra_id');
+    }
+    
+    public function Student()
+    {
+        return $this->hasMany(UserCourse::class);
     }
 
     // Appends
@@ -36,6 +41,12 @@ class Course extends Model
         return $total . ' Video';
     }
 
+    public function getTotalItemAttribute()
+    {
+        $total =  $this->Detail()->count();
+        return $total;
+    }
+
     public function getMitraNameAttribute()
     {
         return $this->mitra->user->name;
@@ -49,6 +60,11 @@ class Course extends Model
     public function getPriceRupiahAttribute()
     {
         return 'Rp ' . number_format($this->price,0,'.');
+    }
+
+    public function getTotalStudentAttribute()
+    {
+        return $this->Student()->count();
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Feature;
+namespace App\DataTables\User;
 
 use App\Models\Feature\Transaction;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class TransactionDatatable extends DataTable
+class TransactionUserDatatable extends DataTable
 {
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
@@ -30,17 +30,17 @@ class TransactionDatatable extends DataTable
     {
         return  [
             [
-                'title' => 'Hapus',
-                'icon' => 'bi bi-trash',
-                'route' => route('backend.master.category.delete',$id),
-                'type' => 'delete',
+                'title' => __('button.see_invoice'),
+                'icon' => 'bi bi-eye',
+                'route' => route('frontend.user.transaction.invoice',$id->invoice_number),
+                'type' => '',
             ],
         ];
     }
 
     public function query(Transaction $model): QueryBuilder
     {
-        return $model->newQuery()->OrderBy('id','desc');
+        return $model->newQuery()->with(['Course'])->where('user_id',auth()->user()->id)->OrderBy('id','desc');
     }
 
     public function html()
@@ -57,9 +57,9 @@ class TransactionDatatable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false)->searchable(false),
             Column::make('invoice_number')->title(__('field.transaction_invoice')),
-            Column::make('course_name')->title(__('field.course_name')),
+            Column::make('course_name')->title(__('field.course_name'))->searchable(false)->orderable('false'),
             Column::make('total_pay')->title(__('field.transaction_total_pay')),
-            Column::make('html_status')->title(__('field.transaction_status')),
+            Column::make('html_status')->title(__('field.transaction_status'))->searchable(false)->orderable('false'),
             Column::make('action')->title(__('field.action'))->orderable(false)->searchable(false),
         ];
     }

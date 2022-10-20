@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\DataTables\User\TransactionUserDatatable;
 use App\Http\Controllers\Controller;
 use App\Models\Feature\Course;
 use App\Models\Feature\Transaction;
@@ -18,10 +19,20 @@ class TransactionController extends Controller
         $this->course = new BaseRepository($course);
     }
 
-    public function index()
+    public function index(TransactionUserDatatable $datatable)
     {
         try {
-            return view('user.transaction.index');
+            return $datatable->render('user.transaction.index');
+        }catch (\Throwable $th) {
+            return view('error.index',['message' => $th->getMessage()]);
+        }
+    }
+
+    public function invoice($invoice)
+    {
+        try {
+            $data['transaction'] = $this->transaction->Query()->where('invoice_number',$invoice)->first();
+            return view('user.transaction.invoice',compact('data'));
         }catch (\Throwable $th) {
             return view('error.index',['message' => $th->getMessage()]);
         }
@@ -29,7 +40,7 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        // try {
+        try {
             $invoice_number = 'INV' . strtoupper(Str::random(4)) . date('md') . rand(0,9999);
             $course = $this->course->find($request->course_id);
             $store = [
@@ -48,9 +59,10 @@ class TransactionController extends Controller
             $snapToken = $midtrans->getSnapToken();
             $transaction->snap_token = $snapToken;
             $transaction->save();
-        // }catch (\Throwable $th) {
-            // return view('error.index',['message' => $th->getMessage()]);
-        // }
+            return redirect()->route('frontend.user.transaction.invoice',$transaction->invoice_number);
+        }catch (\Throwable $th) {
+            return view('error.index',['message' => $th->getMessage()]);
+        }
 
     }
 }

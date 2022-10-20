@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Feature;
 use App\DataTables\Feature\MitraDatatable;
 use App\Http\Controllers\Controller;
 use App\Models\Feature\Mitra;
+use App\Models\User;
 use App\Repositories\BaseRepository;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,10 @@ class MitraController extends Controller
     public function accept(Request $request)
     {
         try {
-            $this->mitra->update($request->mitra_id,['is_approved' => 1]);
+            $mitra = $this->mitra->update($request->mitra_id,['is_approved' => 1]);
+            $user = User::find($mitra->user_id);
+            $user->removeRole('user');
+            $user->assignRole('mitra');
             return back()->with('success',__('message.mitra_register_accept'));
         } catch (\Throwable $th) {
             return view('error.index',['message' => $th->getMessage()]);

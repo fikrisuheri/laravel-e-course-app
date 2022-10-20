@@ -8,9 +8,12 @@ return [
     'detail'     => 'Detail',
     'close'      => 'Close',
     'process'      => 'Process',
-
     'review'     => 'Review',
     'accept'     => 'Accept',
-
     'back'       => 'Back',
+    'previous'       => 'Previous',
+    'next'       => 'Next',
+    'finish'       => 'Finish',
+    'see_invoice'=> 'View Invoice',
+    'process_payment' => 'Process Payment',
 ];

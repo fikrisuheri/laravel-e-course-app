@@ -28,9 +28,11 @@ return [
     'course_price' => 'Harga Kursus',
     'course_duration' => 'Total Durasi',
     'course_total' => 'Total Video',
-
+    'course_student' => 'Siswa',
     // Transaction
     'transaction_total_pay' => 'Total Pembayaran',
-    'transaction_status' => 'Status Pembayaran'
+    'transaction_status' => 'Status Pembayaran',
+    'transaction_invoice' => 'Nomor Faktur',
+    'transaction_buyer' => 'Pembeli'
 
 ];
