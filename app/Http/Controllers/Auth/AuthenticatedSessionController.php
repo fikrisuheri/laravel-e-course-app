@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if(auth()->user()->role_name == 'admin'){
-            return redirect()->route('backend.master.user.index');
+            return redirect()->route('backend.dashboard');
         }else{
             return redirect()->route('frontend.user.dashboard');
         }

@@ -17,6 +17,20 @@ class Mitra extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
+    public function Course()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    // function
+
+    public function getMyTransaction()
+    {
+        return Transaction::whereHas('Course',function($q){
+            $q->where('mitra_id',$this->id);
+        })->get();
+    }
+
     public function getHtmlStatusAttribute()
     {
         if($this->is_approved == '0'){

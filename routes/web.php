@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Feature\CourseController;
 use App\Http\Controllers\Backend\Feature\MitraController;
 use App\Http\Controllers\Backend\Feature\TransactionController as FeatureTransactionController;
@@ -34,6 +35,8 @@ Route::get('/backend/dashboard', function () {
 
 Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->group(function(){
 
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+
     Route::prefix('master')->name('master.')->group(function(){
 
         Route::prefix('category')->name('category.')->group(function(){
@@ -65,6 +68,7 @@ Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->g
         Route::prefix('mitra')->name('mitra.')->group(function(){
 
             Route::get('/',[MitraController::class,'index'])->name('index');
+            Route::get('/show/{id}',[MitraController::class,'show'])->name('show');
             Route::post('/accept',[MitraController::class,'accept'])->name('accept');
         });
 
@@ -126,6 +130,9 @@ Route::name('frontend.')->group(function(){
     
                 Route::get('/',[CoursemitraController::class,'index'])->name('index');
                 Route::get('/create',[CoursemitraController::class,'create'])->name('create');
+                Route::get('/show/{id}',[CoursemitraController::class,'show'])->name('show');
+                Route::get('/edit/{id}',[CoursemitraController::class,'edit'])->name('edit');
+                Route::post('/update/{id}',[CoursemitraController::class,'update'])->name('update');
                 Route::post('/store',[CoursemitraController::class,'store'])->name('store');
     
             });

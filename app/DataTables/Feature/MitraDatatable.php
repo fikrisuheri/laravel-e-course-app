@@ -56,7 +56,7 @@ class MitraDatatable extends DataTable
             $button[] = [
                 'title' => __('button.detail'),
                 'icon' => 'bi bi-eye',
-                'route' => 'javascript:;',
+                'route' => route('backend.feature.mitra.show',$id),
                 'type' => ''
             ];
         return $button;

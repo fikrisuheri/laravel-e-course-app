@@ -47,7 +47,16 @@
                         <h4>Harga Kursus</h4>
                         <h3>{{ $data['course']['price_rupiah'] }}</h3>
                         <hr>
-                        <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
+                        @if ($data['course']['mitra_id'] != auth()->user()->mitra->id)
+                            @php
+                                $userCourse = auth()->user()->UserCourse()->pluck('course_id')->toArray();
+                            @endphp
+                            @if (!in_array($data['course']['id'],$userCourse))
+                            <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
+                            @else
+                            <a href="{{ route('frontend.user.course.index') }}" class="btn btn-primary btn-block">Lanjutkan Belajar</a>
+                            @endif
+                        @endif
                     </div>
                 </form>
                 </div>

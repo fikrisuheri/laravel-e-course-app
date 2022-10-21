@@ -20,6 +20,7 @@ return [
 
     // Mitra
     'mitra_name' => 'Partner Name',
+    'mitra_owner' => 'Partner Owner',
 
     // Course
     'course_name' => 'Course',

@@ -2,6 +2,7 @@
 
 namespace App\Models\Feature;
 
+use App\Models\Master\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,11 @@ class Course extends Model
     public function Detail()
     {
         return $this->hasMany(CourseDetail::class);
+    }
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class,'categorie_id');
     }
 
     public function Mitra()
@@ -32,7 +38,7 @@ class Course extends Model
     {
         $menit =  $this->Detail()->sum('duration');
         $jam = $menit / 60;
-        return $jam . ' Jam';
+        return number_format($jam,1) . ' Jam';
     }
 
     public function getTotalVideoAttribute()

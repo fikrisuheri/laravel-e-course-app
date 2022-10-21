@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Feature\Mitra;
+use App\Models\Feature\UserCourse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,6 +51,11 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function UserCourse()
+    {
+        return $this->hasMany(UserCourse::class);
     }
 
     public function getRoleNameAttribute()

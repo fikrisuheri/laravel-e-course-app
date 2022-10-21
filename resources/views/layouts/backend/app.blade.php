@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('mazer') }}/assets/css/pages/datatables.css">
     <link rel="stylesheet" href="{{ asset('mazer') }}/assets/extensions/toastify-js/src/toastify.css" />
     <link rel="stylesheet" href="{{ asset('mazer') }}/assets/extensions/sweetalert2/sweetalert2.min.css" />
+    <link rel="stylesheet" href="{{ asset('mazer') }}/assets/css/shared/iconly.css" />
     @stack('css')
 </head>
 

@@ -27,6 +27,16 @@ class MitraController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        try {
+            $data['mitra'] = $this->mitra->find($id);
+            return view('backend.feature.mitra.show',compact('data'));
+        } catch (\Throwable $th) {
+            return view('error.index',['message' => $th->getMessage()]);
+        }
+    }
+
     public function accept(Request $request)
     {
         try {

@@ -9,6 +9,12 @@
         <div class="row">
             <div class="col-md-6">
                 <table>
+                    @if (auth()->user()->role_name == 'mitra')
+                    <tr>
+                        <th>{{ __('field.transaction_buyer') }}</th>
+                        <td>: {{ $data['transaction']['user']['name'] }}</td>
+                    </tr>
+                    @endif
                     <tr>
                         <th>{{ __('field.transaction_invoice') }}</th>
                         <td>: {{ $data['transaction']['invoice_number'] }}</td>
@@ -33,9 +39,11 @@
         </div>
     </div>
     <div class="card-footer text-end">
+        @if (auth()->user()->role_name == 'user')
         <button class="btn btn-success btn-icon icon-left" id="pay-button"><i
             class="fa fa-credit-card"></i>
         Process Payment</button>
+        @endif
     </div>
 </div>
 @endsection

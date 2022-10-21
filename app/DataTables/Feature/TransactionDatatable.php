@@ -40,7 +40,7 @@ class TransactionDatatable extends DataTable
 
     public function query(Transaction $model): QueryBuilder
     {
-        return $model->newQuery()->OrderBy('id','desc');
+        return $model->newQuery()->with(['User'])->OrderBy('id','desc');
     }
 
     public function html()
@@ -57,6 +57,7 @@ class TransactionDatatable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false)->searchable(false),
             Column::make('invoice_number')->title(__('field.transaction_invoice')),
+            Column::make('user.name')->title(__('field.transaction_buyer')),
             Column::make('course_name')->title(__('field.course_name')),
             Column::make('total_pay')->title(__('field.transaction_total_pay')),
             Column::make('html_status')->title(__('field.transaction_status')),

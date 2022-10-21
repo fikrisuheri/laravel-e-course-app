@@ -20,6 +20,7 @@ return [
 
     // Mitra
     'mitra_name' => 'Nama Mitra',
+    'mitra_owner' => 'Pemilik',
 
     // Course
     'course_name' => 'Judul Kursus',

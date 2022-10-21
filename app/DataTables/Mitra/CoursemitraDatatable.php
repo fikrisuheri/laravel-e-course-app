@@ -30,16 +30,22 @@ class CoursemitraDatatable extends DataTable
     {
         return  [
             [
+                'title' => __('button.detail'),
+                'icon' => 'bi bi-eye',
+                'route' => route('frontend.mitra.course.show',$id),
+                'type' => 'detail',
+            ],
+            [
+                'title' => __('button.edit'),
+                'icon' => 'bi bi-pen',
+                'route' => route('frontend.mitra.course.edit',$id),
+                'type' => 'edit',
+            ],
+            [
                 'title' => 'Hapus',
                 'icon' => 'bi bi-trash',
                 'route' => route('backend.master.category.delete',$id),
                 'type' => 'delete',
-            ],
-            [
-                'title' => 'Edit',
-                'icon' => 'bi bi-pen',
-                'route' => route('backend.master.category.edit',$id),
-                'type' => '',
             ],
         ];
     }
