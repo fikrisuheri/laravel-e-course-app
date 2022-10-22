@@ -16,4 +16,5 @@ return [
     'finish'       => 'Finish',
     'see_invoice'=> 'View Invoice',
     'process_payment' => 'Process Payment',
+    'witdraw' => 'Request Witdrawal'
 ];

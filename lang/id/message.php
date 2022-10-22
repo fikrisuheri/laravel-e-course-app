@@ -14,4 +14,7 @@ return [
     'mitra_register_accept' => 'Pendaftaran mitra berhasil disetujui!',
 
     'mitra_course_store' => 'Berhasil Mengirim Kursus',
+
+    'withdraw_balance_empty' => 'Saldo Anda Tidak Mencukupi',
+    'withdraw_sent' => 'Permintaan Tarik Saldo Berhasil Dikirim',
 ];

@@ -30,7 +30,8 @@
                                 <div class="tab-pane fade" id="materi" role="tabpanel" aria-labelledby="materi-tab">
                                     <h6>{{ $data['course']['total_video'] }} ({{ $data['course']['total_duration'] }})</h6>
                                     @foreach ($data['course']['detail'] as $detail)
-                                            <div class="alert alert-secondary"><i data-feather="video"></i> {{ $detail->number }}.{{ $detail->name }}</div>
+                                        <div class="alert alert-secondary"><i data-feather="video"></i>
+                                            {{ $detail->number }}.{{ $detail->name }}</div>
                                     @endforeach
                                 </div>
                             </div>
@@ -41,24 +42,35 @@
             <div class="col-md-4">
                 <div class="card">
                     <form action="{{ route('frontend.user.transaction.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="course_id" value="{{ $data['course']['id'] }}">
-                    <div class="card-body">
-                        <h4>Harga Kursus</h4>
-                        <h3>{{ $data['course']['price_rupiah'] }}</h3>
-                        <hr>
-                        @if ($data['course']['mitra_id'] != auth()->user()->mitra->id)
-                            @php
-                                $userCourse = auth()->user()->UserCourse()->pluck('course_id')->toArray();
-                            @endphp
-                            @if (!in_array($data['course']['id'],$userCourse))
-                            <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
+                        @csrf
+                        <input type="hidden" name="course_id" value="{{ $data['course']['id'] }}">
+                        <div class="card-body">
+                            <h4>Harga Kursus</h4>
+                            <h3>{{ $data['course']['price_rupiah'] }}</h3>
+                            <hr>
+                            @auth
+                                @if ($data['course']['mitra_id'] != auth()->user()->mitra->id)
+                                    @php
+                                        $userCourse = auth()
+                                            ->user()
+                                            ->UserCourse()
+                                            ->pluck('course_id')
+                                            ->toArray();
+                                    @endphp
+                                    @if (!in_array($data['course']['id'], $userCourse))
+                                        <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
+                                    @else
+                                        <a href="{{ route('frontend.user.course.index') }}"
+                                            class="btn btn-primary btn-block">Lanjutkan Belajar</a>
+                                    @endif
+                                @else   
+                                <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
+                                @endif
                             @else
-                            <a href="{{ route('frontend.user.course.index') }}" class="btn btn-primary btn-block">Lanjutkan Belajar</a>
-                            @endif
-                        @endif
-                    </div>
-                </form>
+                                <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
+                            @endauth
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

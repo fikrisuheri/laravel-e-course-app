@@ -39,11 +39,9 @@
         </div>
     </div>
     <div class="card-footer text-end">
-        @if (auth()->user()->role_name == 'user')
         <button class="btn btn-success btn-icon icon-left" id="pay-button"><i
             class="fa fa-credit-card"></i>
         Process Payment</button>
-        @endif
     </div>
 </div>
 @endsection

@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_banks', function (Blueprint $table) {
+        Schema::create('web_configs', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('label');
+            $table->text('value')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_banks');
+        Schema::dropIfExists('web_configs');
     }
 };

@@ -30,10 +30,10 @@ class TransactionDatatable extends DataTable
     {
         return  [
             [
-                'title' => 'Hapus',
-                'icon' => 'bi bi-trash',
-                'route' => route('backend.master.category.delete',$id),
-                'type' => 'delete',
+                'title' => __('button.detail'),
+                'icon' => 'bi bi-eye',
+                'route' => route('backend.feature.transaction.show',$id),
+                'type' => '',
             ],
         ];
     }

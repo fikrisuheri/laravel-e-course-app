@@ -10,6 +10,8 @@ return [
     'logo' => 'Logo',
     'description' => 'Description',
     'image' => 'Image',
+    'date' => 'Date',
+    'amount' => 'Amount',
 
     // Category
     'category_name' => 'Category Name',
@@ -35,5 +37,11 @@ return [
     'transaction_total_pay' => 'Total Pay',
     'transaction_status' => 'Payment Status',
     'transaction_invoice' => 'Invoice Number',
-    'transaction_buyer' => 'Buyer'
+    'transaction_buyer' => 'Buyer',
+
+    // Wallet
+    'wallet_balance' => 'Wallet Balance',
+
+    // withdraw
+    'withdraw_bank' => 'Informarsi Rekening',
 ];

@@ -6,4 +6,6 @@ return [
     'mitra'  => 'Mitra',
     'course' => 'Kursus',
     'transaction' => 'Transaksi',
+    'wallet' => 'Dompet',
+    'witdrawal' => 'Penarikan',
 ];

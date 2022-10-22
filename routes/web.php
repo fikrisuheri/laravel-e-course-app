@@ -11,21 +11,13 @@ use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Mitra\CoursemitraController;
 use App\Http\Controllers\Mitra\RegistermitraController;
 use App\Http\Controllers\Mitra\TransactionmitraController;
+use App\Http\Controllers\Mitra\WalletController;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\User\TransactionController;
 use App\Http\Controllers\User\UsercourseController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+ 
 
 
 
@@ -75,12 +67,14 @@ Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->g
         Route::prefix('course')->name('course.')->group(function(){
 
             Route::get('/',[CourseController::class,'index'])->name('index');
+            Route::get('/show/{id}',[CourseController::class,'show'])->name('show');
 
         });
 
         Route::prefix('transaction')->name('transaction.')->group(function(){
 
             Route::get('/',[FeatureTransactionController::class,'index'])->name('index');
+            Route::get('/show/{id}',[FeatureTransactionController::class,'show'])->name('show');
 
         });
 
@@ -140,6 +134,13 @@ Route::name('frontend.')->group(function(){
             Route::prefix('transaction')->name('transaction.')->group(function(){
     
                 Route::get('/',[TransactionmitraController::class,'index'])->name('index');
+    
+            });
+
+            Route::prefix('wallet')->name('wallet.')->group(function(){
+    
+                Route::get('/',[WalletController::class,'index'])->name('index');
+                Route::post('/withdraw',[WalletController::class,'withdraw'])->name('withdraw');
     
             });
     

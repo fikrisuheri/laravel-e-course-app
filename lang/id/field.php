@@ -10,7 +10,9 @@ return [
     'logo' => 'Logo',
     'description' => 'Deskripsi',
     'image' => 'Gambar',
-    
+    'date' => 'Tanggal',
+    'amount' => 'Jumlah',
+
     // Category
     'category_name' => 'Nama Kategori',
 
@@ -34,6 +36,10 @@ return [
     'transaction_total_pay' => 'Total Pembayaran',
     'transaction_status' => 'Status Pembayaran',
     'transaction_invoice' => 'Nomor Faktur',
-    'transaction_buyer' => 'Pembeli'
+    'transaction_buyer' => 'Pembeli',
 
+    // Wallet
+    'wallet_balance' => 'Saldo Dompet',
+    // withdraw
+    'withdraw_bank' => 'Informarsi Rekening',
 ];

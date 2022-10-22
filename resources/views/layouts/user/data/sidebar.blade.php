@@ -53,10 +53,13 @@ class="sidebar-item  has-sub">
 </a>
 <ul class="submenu ">
     <li class="submenu-item ">
-        <a href="{{ route('frontend.mitra.course.index') }}">{{ __('sidebar.course') }}</a>
+        <a href="{{ route('frontend.mitra.course.index') }}"><i class="bi bi-box2"></i> {{ __('sidebar.course') }}</a>
     </li>
     <li class="submenu-item ">
-        <a href="{{ route('frontend.mitra.transaction.index') }}">{{ __('sidebar.transaction') }}</a>
+        <a href="{{ route('frontend.mitra.transaction.index') }}"><i class="bi bi-cash-stack"></i> {{ __('sidebar.transaction') }}</a>
+    </li>
+    <li class="submenu-item ">
+        <a href="{{ route('frontend.mitra.wallet.index') }}"> <i class="bi bi-wallet"></i> {{ __('sidebar.wallet') }}</a>
     </li>
 </ul>
 </li>

@@ -16,4 +16,5 @@ return [
     'finish'       => 'Selesai',
     'see_invoice'=> 'Lihat Faktur',
     'process_payment' => 'Proses Pembayaran',
+    'witdraw' => 'Tarik Saldo'
 ];

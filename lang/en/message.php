@@ -14,4 +14,7 @@ return [
     'mitra_register_accept' => 'Partner registration has been accepted',
 
     'mitra_course_store' => 'Form create course successfully sent',
+
+    'withdraw_balance_empty' => 'Your balance is not enough',
+    'withdraw_sent' => 'Withdraw request successfully sent!',
 ];

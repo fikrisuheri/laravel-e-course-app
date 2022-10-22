@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Models\Feature\Mitra;
 use App\Models\Feature\UserCourse;
+use App\Models\Feature\Wallet;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -43,6 +44,18 @@ class User extends Authenticatable
         return $this->hasOne(Mitra::class);
     }
 
+    public function UserCourse()
+    {
+        return $this->hasMany(UserCourse::class);
+    }
+
+    public function UserWallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
+
+
     // Check
 
     public function isMitra()
@@ -53,11 +66,7 @@ class User extends Authenticatable
         return false;
     }
 
-    public function UserCourse()
-    {
-        return $this->hasMany(UserCourse::class);
-    }
-
+  
     public function getRoleNameAttribute()
     {
         return $this->roles->pluck('name')[0];

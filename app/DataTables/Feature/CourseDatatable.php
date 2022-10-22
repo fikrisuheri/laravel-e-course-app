@@ -33,7 +33,7 @@ class CourseDatatable extends DataTable
             [
                 'title' => __('button.detail'),
                 'icon' => 'bi bi-eye',
-                'route' => route('frontend.mitra.course.show',$id),
+                'route' => route('backend.feature.course.show',$id),
                 'type' => 'detail',
             ],
         ];

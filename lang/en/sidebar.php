@@ -6,4 +6,6 @@ return [
     'mitra'  => 'Partner',
     'course' => 'Course',
     'transaction' => 'Transaction',
+    'wallet' => 'Wallet',
+    'witdrawal' => 'Witdrawal',
 ];

@@ -64,7 +64,7 @@
             })
         }
     </script>
-    @if (session()->has('success'))
+    @if(session()->has('success'))
         <script>
             Toastify({
                 text: "{{ session('success') }}",

@@ -9,4 +9,8 @@ return [
     'transaction_pending' => 'Unpaid',
     'transaction_success' => 'Paid',
     'transaction_expired' => 'Expired',
+
+    // Withdraw
+    'withdraw_pending' => 'Pending',
+    'withdraw_success' => 'Success',
 ];
