@@ -4,7 +4,7 @@
     <div class="col-lg-5 col-12">
         <div id="auth-left">
             <div class="auth-logo">
-                <a href="index.html"><img src="{{ asset('mazer') }}/assets/images/logo/logo.svg"
+                <a href="index.html"><img src="{{ $app_logo }}"
                         alt="Logo"></a>
             </div>
             <h1 class="auth-title">Log in.</h1>
@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
             </form>
             <div class="text-center mt-5 text-lg fs-4">
-                <p class="text-gray-600">Don't have an account? <a href="auth-register.html"
+                <p class="text-gray-600">Don't have an account? <a href="{{ route('register') }}"
                         class="font-bold">Sign
                         up</a>.</p>
                 <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>

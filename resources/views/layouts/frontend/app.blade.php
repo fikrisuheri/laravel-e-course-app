@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>{{ $app_name }}</title>
 
     <link rel="stylesheet" href="{{ asset('mazer') }}/assets/css/main/app.css" />
     <link
@@ -29,7 +29,7 @@
             <div class="container">
               <div class="logo">
                 <a href="index.html"
-                  ><img src="{{ asset('mazer') }}/assets/images/logo/logo.svg" alt="Logo"
+                  ><img src="{{ $app_logo }}" alt="Logo"
                 /></a>
               </div>
               <div class="header-top-right">
@@ -59,9 +59,17 @@
                     <li><a class="dropdown-item" href="{{ route('frontend.user.dashboard') }}">My Dashboard</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li><hr class="dropdown-divider" /></li>
+                    
+                    @auth
                     <li>
-                      <a class="dropdown-item" href="auth-login.html">Logout</a>
+                      <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="dropdown-item" href="#"  href="{{ route('logout')  }}" onclick="event.preventDefault();
+                        this.closest('form').submit();">
+                        <i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                    </form>
                     </li>
+                    @endauth
                   </ul>
                 </div>
                 @else
@@ -117,14 +125,11 @@
           <div class="container">
             <div class="footer clearfix mb-0 text-muted">
               <div class="float-start">
-                <p>2021 &copy; Mazer</p>
+                <p>2022 &copy; {{ $app_name }}</p>
               </div>
               <div class="float-end">
-                <p>
-                  Crafted with
-                  <span class="text-danger"><i class="bi bi-heart"></i></span>
-                  by <a href="https://saugi.me">Saugi</a>
-                </p>
+                <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i></span>
+                  by <a href="https://ahmadsaugi.com">Saugi</a> Develop Apps by <a href="https://github.com/fikrisuheri">FikriSuheri</a></p>
               </div>
             </div>
           </div>

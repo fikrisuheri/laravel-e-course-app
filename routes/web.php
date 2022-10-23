@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\Feature\TransactionController as FeatureTransac
 use App\Http\Controllers\Backend\Feature\WithdrawController;
 use App\Http\Controllers\Backend\Master\CategoryController;
 use App\Http\Controllers\Backend\Master\PenggunaController;
+use App\Http\Controllers\Config\WebconfigController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 use App\Http\Controllers\Frontend\KursusController;
 use App\Http\Controllers\Frontend\WelcomeController;
@@ -88,6 +89,13 @@ Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->g
         });
 
     });
+
+    Route::prefix('config')->name('config.')->group(function () {
+        Route::get('/', [WebconfigController::class, 'index'])->name('index');
+        Route::post('/', [WebConfigController::class, 'store'])->name('store');
+        Route::post('/', [WebConfigController::class, 'update'])->name('update');
+        Route::delete('/', [WebConfigController::class, 'destroy'])->name('destroy');            
+});
 
 });
 

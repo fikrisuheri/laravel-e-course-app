@@ -21,7 +21,7 @@
            <div class="col-md-3">
             <div class="card">
                 <div class="card-content">
-                  <img class="card-img-top img-fluid" src="{{ asset('mazer') }}/assets/images/samples/origami.jpg" alt="Card image cap" style="height: 200px">
+                  <img class="card-img-top img-fluid" src="{{ $course->image_path }}" alt="Card image cap" style="height: 200px">
                   <div class="card-body">
                     <h4 class="card-title">{{ $course['name'] }}</h4>
                     <p class="card-text">

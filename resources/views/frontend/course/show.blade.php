@@ -49,7 +49,6 @@
                             <h3>{{ $data['course']['price_rupiah'] }}</h3>
                             <hr>
                             @auth
-                                @if ($data['course']['mitra_id'] != auth()->user()->mitra->id)
                                     @php
                                         $userCourse = auth()
                                             ->user()
@@ -63,9 +62,6 @@
                                         <a href="{{ route('frontend.user.course.index') }}"
                                             class="btn btn-primary btn-block">Lanjutkan Belajar</a>
                                     @endif
-                                @else   
-                                <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
-                                @endif
                             @else
                                 <button type="submit" class="btn btn-primary btn-block">Beli Kursus Ini</button>
                             @endauth

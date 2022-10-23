@@ -32,6 +32,14 @@
     
   @include('layouts.backend.data.master-sidebar')
   @include('layouts.backend.data.feature-sidebar')
+
+  <li
+  class="sidebar-item  ">
+  <a href="{{ route('backend.config.index') }}" class='sidebar-link'>
+      <i class="bi bi-gear"></i>
+      <span>Config</span>
+  </a>
+</li>
     
 </ul>
 </div>
