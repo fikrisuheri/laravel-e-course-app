@@ -4,8 +4,10 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Feature\CourseController;
 use App\Http\Controllers\Backend\Feature\MitraController;
 use App\Http\Controllers\Backend\Feature\TransactionController as FeatureTransactionController;
+use App\Http\Controllers\Backend\Feature\WithdrawController;
 use App\Http\Controllers\Backend\Master\CategoryController;
 use App\Http\Controllers\Backend\Master\PenggunaController;
+use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 use App\Http\Controllers\Frontend\KursusController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Mitra\CoursemitraController;
@@ -78,9 +80,18 @@ Route::prefix('backend')->name('backend.')->middleware(['auth','role:admin'])->g
 
         });
 
+        Route::prefix('withdraw')->name('withdraw.')->group(function(){
+
+            Route::get('/',[WithdrawController::class,'index'])->name('index');
+            Route::get('/sent/{id}',[WithdrawController::class,'sent'])->name('sent');
+
+        });
+
     });
 
 });
+
+
 
 Route::name('frontend.')->group(function(){
 
@@ -91,6 +102,10 @@ Route::name('frontend.')->group(function(){
         Route::get('/{mitraSlug}/{courseSlug}',[KursusController::class,'show'])->name('show');
 
     });
+
+    Route::prefix('category')->name('category.')->group(function(){
+        Route::get('/{slug}',[FrontendCategoryController::class,'show'])->name('show');
+    }); 
 
     Route::middleware(['auth','role:user|mitra'])->group(function(){
 

@@ -14,5 +14,8 @@ class="sidebar-item  has-sub">
     <li class="submenu-item ">
         <a href="{{ route('backend.feature.transaction.index') }}">{{ __('sidebar.transaction') }}</a>
     </li>
+    <li class="submenu-item ">
+        <a href="{{ route('backend.feature.withdraw.index') }}">{{ __('sidebar.witdrawal') }}</a>
+    </li>
 </ul>
 </li>

@@ -79,52 +79,24 @@
             <div class="container">
               <ul>
                 <li class="menu-item">
-                  <a href="index.html" class="menu-link">
-                    <span><i class="bi bi-grid-fill"></i> Dashboard</span>
+                  <a href="{{ url('/') }}" class="menu-link">
+                    <span><i class="bi bi-grid-fill"></i> Home</span>
                   </a>
                 </li>
 
                 <li class="menu-item active has-sub">
                   <a href="#" class="menu-link">
-                    <span><i class="bi bi-grid-1x2-fill"></i> Layouts</span>
+                    <span><i class="bi bi-grid-1x2-fill"></i> {{ __('sidebar.category') }}</span>
                   </a>
                   <div class="submenu">
                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
                     <div class="submenu-group-wrapper">
                       <ul class="submenu-group">
+                        @foreach ($global_category as $category)
                         <li class="submenu-item">
-                          <a href="layout-default.html" class="submenu-link"
-                            >Default Layout</a
-                          >
+                          <a href="{{ route('frontend.category.show',$category->slug) }}" class="submenu-link">{{ $category->name }}</a>
                         </li>
-
-                        <li class="submenu-item">
-                          <a
-                            href="layout-vertical-1-column.html"
-                            class="submenu-link"
-                            >1 Column</a
-                          >
-                        </li>
-
-                        <li class="submenu-item">
-                          <a
-                            href="layout-vertical-navbar.html"
-                            class="submenu-link"
-                            >Vertical Navbar</a
-                          >
-                        </li>
-
-                        <li class="submenu-item">
-                          <a href="layout-rtl.html" class="submenu-link"
-                            >RTL Layout</a
-                          >
-                        </li>
-
-                        <li class="submenu-item active">
-                          <a href="layout-horizontal.html" class="submenu-link"
-                            >Horizontal Menu</a
-                          >
-                        </li>
+                        @endforeach                         
                       </ul>
                     </div>
                   </div>

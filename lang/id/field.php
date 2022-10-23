@@ -12,6 +12,7 @@ return [
     'image' => 'Gambar',
     'date' => 'Tanggal',
     'amount' => 'Jumlah',
+    'status' => 'Status',
 
     // Category
     'category_name' => 'Nama Kategori',

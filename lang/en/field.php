@@ -12,7 +12,7 @@ return [
     'image' => 'Image',
     'date' => 'Date',
     'amount' => 'Amount',
-
+    'status' => 'Status',
     // Category
     'category_name' => 'Category Name',
 
