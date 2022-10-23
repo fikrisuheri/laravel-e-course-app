@@ -1,5 +1,7 @@
 <h1 align="center">Selamat datang di Aplikasi Ecourse Laravel! 👋</h1>
- ![Screenshot 2022-10-23 210908](https://user-images.githubusercontent.com/61069138/197397217-c8cec756-1070-4bb0-a20c-39c9300cefd8.png)
+<div>
+![Screenshot 2022-10-23 210908](https://user-images.githubusercontent.com/61069138/197397140-0cb2cef9-4e47-4589-b90d-2d6c0adc399e.png)
+</div>
 
 
 
