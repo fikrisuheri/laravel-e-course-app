@@ -14,7 +14,7 @@
 
 ## DIMOHON UNTUK TIDAK DIPERJUALBELIKAN !
 
-## Fitur apa saja yang tersedia di Aplikasi Toko Online Laravel?
+## Fitur apa saja yang tersedia di Aplikasi Ecourse Laravel?
 
 - TERINTEGRASI DENGAN PAYMENT GATEWAY MIDTRANS
 - BISA JADI MITRA DAN MEMBUAT COURSE SENDIRI
