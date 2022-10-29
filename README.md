@@ -75,8 +75,7 @@ php artisan serve
 
 
 ## Contributing
-
-Contributions, issues and feature requests di persilahkan.
+APlikasi Ini belum beres sepenuhnya, silahkan jika ingin menambah fitur atau memperbaiki bug pada aplikasi ini.
 
 
 ## Author
